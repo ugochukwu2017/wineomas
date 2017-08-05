@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+<h2>Wine list</h2>
+{% endblock %}
+
+{% block content %}
+{% if wine_list %}
+<div class="row">
+    {% for wine in wine_list %}
+    <div class="col-xs-6 col-lg-4">
+        {% if wine.review_set.all %}
+        <h4><a href="{% url 'reviews:wine_detail' wine.id %}">
+        {{ wine.name }}
+        </a></h4>
+        {% else %}
+        <h4><a href="{% url 'reviews:add_reviews' wine.id %}">
+        {{ wine.name }}
+        </a></h4>
+        {% endif %}
+        <h5>{{ wine.review_set.count }} reviews</h5>
+        {% if wine.review_set.all %}
+        <h5>{{ wine.rating_average | floatformat }} average rating</h5>
+        {% else %}
+        No review yet!
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>No wines are available.</p>
+{% endif %}
+
+{% if user.is_staff %}
+<h3>Add more wine</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'reviews:add_wine' %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout='inline' %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "star" %} Add
+    </button>
+    {% endbuttons %}
+</form>
+{% endif %}
+{% endblock %}

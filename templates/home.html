@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
+<div class="w3-content"  style="max-width:100%" >
+
+<img class="mySlides" src="static/images/wine.jpg" height="400" width="1135">
+<img class="mySlides" src="static/images/wine1.jpg" height="400" width="1135">
+    <img class="mySlides" src="static/images/wine2.jpg" height="400" width="1135">
+    <img class="mySlides" src="static/images/wine3.jpg" height="400" width="1135">
+    <img class="mySlides" src="static/images/wine5.jpg" height="400" width="1135">
+    <img class="mySlides" src="static/images/wine7.jpg" height="400" width="1135">
+    <img class="mySlides" src="static/images/wine8.jpg" height="400" width="1135">
+    <img class="mySlides" src="static/images/wine9.jpg" height="400" width="1135">
+</div>
+<br><br>
+<div style="text-align:center">
+    <p><h1><b>Wineomas</b></h1></p>
+<p><h2><i>Discover the value of quality drinks </i></h2></p>
+</div>
+<br><br><br><br>
+<div class="container" style="background: #E5E4E2">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2 class="text-center">Wineomas</h2>
+      <p align="justify"><i>We've compiled a collection of reviews to inspire your choice of wine.
+          Contributions and descriptions from top-notch wine experts gives insight
+          of how various wines stand above their competitions.</i> </p>
+    </div>
+    <div class="col-lg-4">
+        <p style="border-right: solid 1px #000;">
+      <h2 class="text-center">Tasting wine</h2>
+      <p align="justify"><i>There’s no right way or wrong way to taste wine.
+          It’s this simple — do you like what you’re drinking or do you not like what you’re drinking?
+          That said, there’s a formal way to taste wine that reveals more about the wine in your glass,
+          even before you start drinking. Here at Wineomas, we understand that this method of tasting can be intimidating,
+          so we’re going to break it down for you, leaving you feeling comfortable and confident if you wish to use this method.
+      </i></p>
+    </div>
+    <div class="col-lg-4">
+      <h2 class="text-center">Fun wine facts</h2>
+      <p align="justify"><i>Human beings have been drinking wine for quite a long time
+          — archaeologists have discovered evidence of consumption in Georgia dated to circa 6000 BC
+          and production sites in Armenia dated to 4100 BC.
+          As wine has woven its way through all of recorded history we’ve found more than a few interesting facts to share.
+      </i></p>
+    </div>
+  </div>
+    <br>
+</div>
+
+<script>
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1}
+    x[slideIndex-1].style.display = "block";
+    setTimeout(carousel, 5000);
+}
+</script>
+
+{% endblock %}
+
+<div class="mySlides w3-container w3-#ea651e" style="text-align:center;border:1px solid #ea651e">
+    <br><br><br><br><br><br>
+    <h1><b>Wineomas</b></h1>
+    <br><br><br>
+    <h1><i>We review wines so you can be better served</i></h1>
+    <br><br><br><br><br>
+  </div>

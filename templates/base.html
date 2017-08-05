@@ -1,0 +1,52 @@
+
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{% block bootstrap3_content %}
+<div class="container" >
+    <nav class="navbar navbar-default" style="background:#d489b2">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'welcome' %}">Wineomas</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'reviews:wine_list' %}">Wine list</a></li>
+                <li><a href="{% url 'reviews:review_list' %}">Reviews</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'reviews:user_review_list' user.username %}">Hello {{ user.username }}</a></li>
+                <li><a href="{% url 'auth:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'auth:login' %}">Login</a></li>
+                <li><a href="/accounts/register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+
+    <h1>{% block title %}(no title){% endblock %}</h1>
+
+    {% bootstrap_messages %}
+
+    {% block content %}(no content){% endblock %}
+</div>
+<br><br>
+
+    <hr>
+
+<footer>
+        <div class="col-lg-6">
+              <p>&copy; Company {% now 'Y' %}</p>
+        </div>
+            <div class="col-lg-6 text-right">
+            Connect with us on
+            <a href="http://www.facebook.com/okiyi1"><i class="fa fa-facebook"></i> Facebook</a> or
+            <a href="https://twitter.com/OkiyiUgo"><i class="fa fa-twitter"></i> Twitter</a>
+          </div>
+</footer>
+{% endblock %}
